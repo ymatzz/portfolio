@@ -1,0 +1,43 @@
+.section {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    margin-bottom: 3rem;
+    padding-left: 20px;
+    border-left: 2px solid var(--accent-color);
+}
+
+.roleTitle {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.company {
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.description {
+    color: var(--secondary-text);
+    margin-bottom: 15px;
+}
+
+.techStack {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #ccc;
+}

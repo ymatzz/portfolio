@@ -1,0 +1,67 @@
+.section {
+    /* AUMENTAR de 800px para 1000px para igualar ao Hero e alinhar as bordas */
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    /* Um pouco mais de espaço antes dos cards */
+    font-weight: 700;
+
+    /* ADICIONADO: Centraliza o título "Tecnologias" */
+    text-align: center;
+    color: #fff;
+}
+
+.grid {
+    display: flex;
+    /* Mudando para Flex para centralizar melhor se houver poucos itens na linha */
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Garante que o bloco de skills fique no meio */
+    gap: 20px;
+}
+
+.skillItem {
+    background: #1a1a1a;
+    padding: 15px 25px;
+    /* Cards um pouco mais largos */
+    border-radius: 8px;
+    /* Cantos um pouco mais arredondados */
+    text-align: center;
+    border: 1px solid #333;
+    font-family: monospace;
+    font-size: 1rem;
+    transition: transform 0.2s, border-color 0.2s;
+
+    /* Garante que os itens não fiquem gigantes nem minusculos */
+    flex: 0 1 auto;
+}
+
+.skillItem:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    background: #222;
+}
+
+.certBadge {
+    margin-top: 3rem;
+    padding: 15px 30px;
+    background: rgba(0, 112, 243, 0.05);
+    /* Fundo mais sutil */
+    border: 1px solid var(--accent-color);
+    border-radius: 50px;
+    /* Borda redonda estilo "pill" fica mais moderno */
+    display: block;
+    /* Para aceitar margin auto */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    /* Centraliza a badge */
+    color: var(--accent-color);
+    font-weight: 600;
+    text-align: center;
+}
