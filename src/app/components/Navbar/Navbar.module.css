@@ -1,0 +1,100 @@
+/* ... (Mantenha o .nav como estava) ... */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+
+    /* MUDANÇA 1: Centraliza o conteúdo direto (no caso, a ul .navLinks) */
+    justify-content: center;
+    align-items: center;
+
+    /* Necessário para o posicionamento absoluto do logo funcionar referente a este container */
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+
+    /* MUDANÇA 2: Tira o logo do fluxo normal e fixa na esquerda */
+    position: absolute;
+    left: 20px;
+    /* Alinha com o padding do container */
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    /* Não precisa de margin ou float, o justify-content: center do pai já resolve */
+}
+
+.link {
+    color: #ccc;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.link:hover {
+    color: #fff;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+
+    /* MUDANÇA 3: No mobile, não queremos sobreposição. 
+     Voltamos ao padrão "um em cada ponta" */
+    .container {
+        justify-content: space-between;
+    }
+
+    .logo {
+        position: static;
+        /* Remove o absolute no mobile para fluir naturalmente */
+    }
+
+    .navLinks {
+        gap: 1.2rem;
+    }
+
+    .link {
+        font-size: 0.85rem;
+    }
+}

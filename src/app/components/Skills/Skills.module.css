@@ -8,43 +8,77 @@
 .heading {
     font-size: 2rem;
     margin-bottom: 3rem;
-    /* Um pouco mais de espaço antes dos cards */
     font-weight: 700;
-
-    /* ADICIONADO: Centraliza o título "Tecnologias" */
     text-align: center;
     color: #fff;
 }
 
-.grid {
+.slider {
+    margin: 0 auto;
+    overflow: hidden;
+    /* Esconde o que sai da tela */
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    /* Largura controlada para mostrar +/- 5 itens dependendo do tamanho do card */
+
+    /* Opcional: Efeito de fade nas laterais para ficar elegante */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.slideTrack {
     display: flex;
-    /* Mudando para Flex para centralizar melhor se houver poucos itens na linha */
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Garante que o bloco de skills fique no meio */
-    gap: 20px;
+    width: max-content;
+    /* Garante que fiquem todos numa linha só */
+    gap: 2rem;
+    /* Espaço entre os cards */
+    animation: scroll 25s linear infinite;
+    /* A mágica da animação */
+}
+
+/* Pausa a animação quando passar o mouse em cima */
+.slideTrack:hover {
+    animation-play-state: paused;
 }
 
 .skillItem {
     background: #1a1a1a;
-    padding: 15px 25px;
-    /* Cards um pouco mais largos */
+    padding: 15px 0;
+    /* Padding vertical */
+    width: 150px;
+    /* Largura fixa para garantir uniformidade no carrossel */
     border-radius: 8px;
-    /* Cantos um pouco mais arredondados */
     text-align: center;
     border: 1px solid #333;
     font-family: monospace;
     font-size: 1rem;
-    transition: transform 0.2s, border-color 0.2s;
+    color: #e0e0e0;
 
-    /* Garante que os itens não fiquem gigantes nem minusculos */
-    flex: 0 1 auto;
+    /* Importante para o flex não esmagar os itens */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
 .skillItem:hover {
-    transform: translateY(-5px);
     border-color: var(--accent-color);
     background: #222;
+}
+
+/* Animação que move a pista da direita para a esquerda */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Move exatamente 50% (o tamanho da lista original) para criar o loop perfeito */
+        transform: translateX(-50%);
+    }
 }
 
 .certBadge {
@@ -64,4 +98,30 @@
     color: var(--accent-color);
     font-weight: 600;
     text-align: center;
+}
+
+/* Wrapper que pega a largura total da tela e muda a cor */
+.sectionWrapper {
+    width: 100%;
+    background-color: #161616;
+    /* Um cinza levemente mais claro que o fundo principal */
+    border-top: 1px solid #333;
+    /* Uma linha sutil de separação */
+    border-bottom: 1px solid #333;
+    /* Opcional: fecha a seção */
+
+    /* Espaçamento interno da seção inteira */
+    padding: 4rem 0;
+    margin-top: 0;
+    /* Remove margens externas para colar no Hero */
+}
+
+/* Container interno que alinha com o conteúdo do Hero */
+.container {
+    max-width: 1000px;
+    /* Mesma largura do Hero */
+    margin: 0 auto;
+    /* Centraliza na tela */
+    padding: 0 20px;
+    /* Margem de segurança lateral */
 }

@@ -6,17 +6,19 @@ import { PiMicrosoftOutlookLogo } from "react-icons/pi";
 
 export default function Hero() {
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id="home">
             {/* Bloco de Texto */}
             <div className={styles.content}>
                 <span className={styles.greeting}>Olá, eu sou</span>
                 <h1 className={styles.title}>Matheus Fernandes dos Santos.</h1>
                 <h2 className={styles.subtitle}>Desenvolvedor Java & Python & AWS.</h2>
+
                 <p className={styles.description}>
-                    Sou um desenvolvedor full stack, estudante de sistemas de informação com experiência em desenvolvimento de software.
-                    Posso desenvolver soluções escaláveis na nuvem, sites, automações, APIs e muito mais. Transformo problemas complexos em
-                    microsserviços eficientes.
+                    Sou um <strong>desenvolvedor full stack</strong> e estudante de sistemas de informação.
+                    Tenho experiência em criar <strong>soluções escaláveis na nuvem</strong>, automações,
+                    APIs robustas e transformar problemas complexos em <strong>microsserviços eficientes</strong>.
                 </p>
+
                 <a href="#projects" className={styles.ctaButton}>
                     Ver Projetos
                 </a>
@@ -24,7 +26,7 @@ export default function Hero() {
                 {/* Contêiner dos Ícones de Contato */}
                 <div className={styles.contactIcons}>
                     <a
-                        href="https://github.com/ymatzz" // Substitua pelo seu link
+                        href="https://github.com/ymatzz"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.iconLink}
@@ -33,7 +35,7 @@ export default function Hero() {
                         <FaGithub />
                     </a>
                     <a
-                        href="https://www.linkedin.com/in/matheus-fernandes-1b3386234/" // Substitua pelo seu link
+                        href="https://www.linkedin.com/in/matheus-fernandes-1b3386234/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.iconLink}
@@ -42,7 +44,7 @@ export default function Hero() {
                         <FaLinkedinIn />
                     </a>
                     <a
-                        href="mailto:matheus.fernandes.2012@hotmail.com" // Substitua pelo seu email
+                        href="mailto:matheus.fernandes.2012@hotmail.com"
                         className={styles.iconLink}
                         aria-label="Email"
                     >
@@ -54,10 +56,11 @@ export default function Hero() {
             {/* Bloco da Imagem */}
             <div className={styles.imageContainer}>
                 <Image
-                    src="/images/profile.jpg"
+                    src="/images/profile.jpeg" // Certifique-se que o nome do arquivo está correto
                     alt="Foto de Matheus Fernandes"
-                    width={350}
-                    height={350}
+                    // MUDANÇA AQUI: Formato Retrato (Vertical) para alinhar com a altura do texto
+                    width={400}
+                    height={500}
                     className={styles.profileImage}
                     priority
                 />
