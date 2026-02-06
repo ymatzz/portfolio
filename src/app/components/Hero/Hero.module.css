@@ -162,6 +162,10 @@
         margin-bottom: 0;
     }
 
+    .iconLink {
+        font-size: 2.4rem;
+    }
+
     /* --- AQUI ESTÁ A MÁGICA PARA A FOTO --- */
     .profileImage {
         width: 100% !important;
