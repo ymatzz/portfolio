@@ -78,23 +78,27 @@
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
-
-    /* MUDANÇA 3: No mobile, não queremos sobreposição. 
-     Voltamos ao padrão "um em cada ponta" */
     .container {
-        justify-content: space-between;
+        /* MUDANÇA: Mantemos centralizado (center) em vez de space-between */
+        /* Isso garante que os links fiquem no meio da tela */
+        justify-content: center;
     }
 
     .logo {
-        position: static;
-        /* Remove o absolute no mobile para fluir naturalmente */
+        /* MUDANÇA IMPORTANTE: Escondemos o nome "Matheus" no mobile */
+        /* Isso resolve o problema do texto colado e poluição visual */
+        display: none;
     }
 
     .navLinks {
-        gap: 1.2rem;
+        gap: 1.5rem;
+        /* Um pouco mais de espaço entre os links agora que tiramos o logo */
+        padding: 0;
+        margin: 0;
     }
 
     .link {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        /* Tamanho legível */
     }
 }

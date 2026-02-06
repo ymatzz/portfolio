@@ -53,7 +53,7 @@
 }
 
 .description strong {
-    color: white;
+    color: var(--accent-color);
     font-weight: 700;
 }
 
@@ -115,10 +115,13 @@
 @media (max-width: 900px) {
     .section {
         flex-direction: column-reverse;
-        /* Inverte a ordem: Foto em cima, Texto embaixo */
         text-align: center;
-        /* Reduzi o padding superior para a foto não ficar muito longe do topo */
-        padding: 3rem 20px 4rem 20px;
+
+        /* CORREÇÃO AQUI: */
+        /* Antes: padding: 3rem 20px 4rem 20px; */
+        /* Agora: 8rem no topo. (70px da navbar + espaço extra) */
+        padding: 4rem 20px 2rem 20px;
+
         gap: 2rem;
     }
 
@@ -162,18 +165,12 @@
     /* --- AQUI ESTÁ A MÁGICA PARA A FOTO --- */
     .profileImage {
         width: 100% !important;
-        /* Respeita o container */
-
-        /* MUDANÇA PRINCIPAL: */
         max-width: 240px;
-        /* Limita a largura máxima. Antes estava 350px (muito grande) */
-
         height: auto !important;
-        /* Mantém a proporção correta */
         aspect-ratio: 4/5;
-        /* Mantém o formato retrato */
 
+        /* Adicionei uma margem extra no topo da imagem por segurança */
+        margin-top: 1rem;
         margin-bottom: 1rem;
-        /* Espaço entre a foto e o "Olá, eu sou" */
     }
 }
