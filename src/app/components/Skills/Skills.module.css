@@ -1,8 +1,52 @@
-.section {
-    /* AUMENTAR de 800px para 1000px para igualar ao Hero e alinhar as bordas */
+/* Wrapper da Seção */
+.sectionWrapper {
+    width: 100%;
+    background-color: #000;
+    /* Fundo preto base */
+    position: relative;
+    /* CRUCIAL: segura o canvas absoluto */
+    overflow: hidden;
+    /* Garante que nada vaze */
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 4rem 0;
+}
+
+/* O Canvas do Matrix */
+.matrixCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Fica no fundo */
+    opacity: 0.6;
+    /* Controla a intensidade do brilho do matrix */
+}
+
+/* Camada de escurecimento (Opcional, mas recomendada para leitura) */
+.matrixOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, #000 90%);
+    /* Vinheta escura */
+    z-index: 1;
+    /* Fica acima do canvas, abaixo do conteúdo */
+}
+
+/* O Conteúdo (Texto, Cards, Badge) */
+.container {
     max-width: 1000px;
-    margin: 4rem auto;
+    margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    /* Necessário para o z-index funcionar */
+    z-index: 2;
+    /* Fica acima do efeito matrix */
 }
 
 .heading {
@@ -11,18 +55,19 @@
     font-weight: 700;
     text-align: center;
     color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    /* Sombra para destacar do fundo */
 }
+
+/* ... (Mantenha o restante: .slider, .slideTrack, .skillItem, etc) ... */
 
 .slider {
     margin: 0 auto;
     overflow: hidden;
-    /* Esconde o que sai da tela */
     position: relative;
     width: 100%;
     max-width: 900px;
-    /* Largura controlada para mostrar +/- 5 itens dependendo do tamanho do card */
-
-    /* Opcional: Efeito de fade nas laterais para ficar elegante */
+    /* Gradiente ajustado para combinar com o fundo preto */
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -30,53 +75,47 @@
 .slideTrack {
     display: flex;
     width: max-content;
-    /* Garante que fiquem todos numa linha só */
     gap: 2rem;
-    /* Espaço entre os cards */
     animation: scroll 25s linear infinite;
-    /* A mágica da animação */
 }
 
-/* Pausa a animação quando passar o mouse em cima */
 .slideTrack:hover {
     animation-play-state: paused;
 }
 
 .skillItem {
-    background: #1a1a1a;
+    /* Mudei o fundo para um preto semi-transparente para ver o matrix atrás levemente */
+    background: rgba(26, 26, 26, 0.9);
     padding: 15px 0;
-    /* Padding vertical */
     width: 150px;
-    /* Largura fixa para garantir uniformidade no carrossel */
     border-radius: 8px;
     text-align: center;
     border: 1px solid #333;
     font-family: monospace;
     font-size: 1rem;
     color: #e0e0e0;
-
-    /* Importante para o flex não esmagar os itens */
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
 
-    transition: border-color 0.2s, background-color 0.2s;
+    /* Sombra para destacar o card do fundo animado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 .skillItem:hover {
     border-color: var(--accent-color);
     background: #222;
+    transform: translateY(-5px);
 }
 
-/* Animação que move a pista da direita para a esquerda */
 @keyframes scroll {
     0% {
         transform: translateX(0);
     }
 
     100% {
-        /* Move exatamente 50% (o tamanho da lista original) para criar o loop perfeito */
         transform: translateX(-50%);
     }
 }
@@ -84,44 +123,23 @@
 .certBadge {
     margin-top: 3rem;
     padding: 15px 30px;
-    background: rgba(0, 112, 243, 0.05);
-    /* Fundo mais sutil */
+    background: rgba(0, 0, 0, 0.8);
+    /* Fundo mais escuro para ler melhor */
     border: 1px solid var(--accent-color);
     border-radius: 50px;
-    /* Borda redonda estilo "pill" fica mais moderno */
     display: block;
-    /* Para aceitar margin auto */
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    /* Centraliza a badge */
     color: var(--accent-color);
     font-weight: 600;
     text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 112, 243, 0.2);
+    transition: all 0.3s ease;
 }
 
-/* Wrapper que pega a largura total da tela e muda a cor */
-.sectionWrapper {
-    width: 100%;
-    background-color: #161616;
-    /* Um cinza levemente mais claro que o fundo principal */
-    border-top: 1px solid #333;
-    /* Uma linha sutil de separação */
-    border-bottom: 1px solid #333;
-    /* Opcional: fecha a seção */
-
-    /* Espaçamento interno da seção inteira */
-    padding: 4rem 0;
-    margin-top: 0;
-    /* Remove margens externas para colar no Hero */
-}
-
-/* Container interno que alinha com o conteúdo do Hero */
-.container {
-    max-width: 1000px;
-    /* Mesma largura do Hero */
-    margin: 0 auto;
-    /* Centraliza na tela */
-    padding: 0 20px;
-    /* Margem de segurança lateral */
+.certBadge:hover {
+    background: rgba(0, 112, 243, 0.15);
+    transform: scale(1.05);
 }
