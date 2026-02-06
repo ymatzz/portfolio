@@ -12,9 +12,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Portfolio of Matheus Fernandes",
-};
+  title: 'Matheus Fernandes | Dev Portfolio',
+  description: 'Portfolio de Desenvolvedor Full Stack',
+  icons: {
+    icon: '/images/logo-pequena.png', // Caminho para sua imagem na pasta public
+  },
+}
 
 export default function RootLayout({ children }) {
   return (

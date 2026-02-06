@@ -1,11 +1,13 @@
-/* ... (Mantenha o .nav como estava) ... */
+/* ... (Mantenha o .nav e .container como estavam) ... */
 .nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(17, 17, 17, 0.8);
+    /* Altura total da barra */
+    background: rgba(17, 17, 17, 0.9);
+    /* Aumentei um pouco a opacidade para a logo destacar mais */
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -17,36 +19,51 @@
     padding: 0 20px;
     height: 100%;
     display: flex;
-
-    /* MUDANÇA 1: Centraliza o conteúdo direto (no caso, a ul .navLinks) */
     justify-content: center;
     align-items: center;
-
-    /* Necessário para o posicionamento absoluto do logo funcionar referente a este container */
     position: relative;
 }
 
+/* Container do Link da logo */
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -1px;
-
-    /* MUDANÇA 2: Tira o logo do fluxo normal e fixa na esquerda */
     position: absolute;
     left: 20px;
-    /* Alinha com o padding do container */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Centraliza verticalmente */
+    display: flex;
+    align-items: center;
+    /* Adicionamos altura fixa no container para garantir alinhamento */
+    height: 70px;
+    z-index: 1001;
+    /* Garante que fique acima de tudo */
 }
 
-.logo span {
-    color: var(--accent-color);
+/* CLASSE DA IMAGEM DA LOGO */
+.logoImage {
+    /* Truque 1: Vamos permitir que ela seja alta */
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+
+    /* Truque 2: O ZOOM MÁGICO */
+    /* Isso aumenta a imagem em 60% (1.6x) ignorando as bordas invisíveis */
+    /* Ajuste este valor (1.4, 1.5, 1.8) conforme seu gosto */
+    transform: scale(1.8);
+
+    /* Garante que o zoom cresça para a direita, mantendo o alinhamento esquerdo */
+    transform-origin: left center;
 }
 
+.logo:hover {
+    opacity: 0.8;
+}
+
+/* ... (Mantenha o restante: .navLinks, .link, media queries) ... */
 .navLinks {
     display: flex;
     gap: 2rem;
     list-style: none;
-    /* Não precisa de margin ou float, o justify-content: center do pai já resolve */
 }
 
 .link {
@@ -55,6 +72,7 @@
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    text-decoration: none;
 }
 
 .link:hover {
@@ -79,26 +97,21 @@
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .container {
-        /* MUDANÇA: Mantemos centralizado (center) em vez de space-between */
-        /* Isso garante que os links fiquem no meio da tela */
         justify-content: center;
     }
 
+    /* Mantemos escondido no mobile pois a logo completa é muito larga */
     .logo {
-        /* MUDANÇA IMPORTANTE: Escondemos o nome "Matheus" no mobile */
-        /* Isso resolve o problema do texto colado e poluição visual */
         display: none;
     }
 
     .navLinks {
         gap: 1.5rem;
-        /* Um pouco mais de espaço entre os links agora que tiramos o logo */
         padding: 0;
         margin: 0;
     }
 
     .link {
         font-size: 0.9rem;
-        /* Tamanho legível */
     }
 }

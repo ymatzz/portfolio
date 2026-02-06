@@ -55,7 +55,7 @@ export default function Hero() {
 
             {/* Bloco da Imagem */}
             <div className={styles.imageContainer}>
-                <Image
+                <img
                     src="/images/profile.jpeg" // Certifique-se que o nome do arquivo está correto
                     alt="Foto de Matheus Fernandes"
                     // MUDANÇA AQUI: Formato Retrato (Vertical) para alinhar com a altura do texto
